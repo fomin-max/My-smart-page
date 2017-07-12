@@ -1,0 +1,217 @@
+{% load static %}
+{% load parser %}
+{% load feeds %}
+{#		{% cache 1800 feed  %}#}
+{#          {% load parser %}#}
+{#          {% pull_feed 'http://www.vesti.ru/vesti.rss' 3 %}#}
+{#        {% endcache %}#}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+{#    <script type='text/javascript'>#}
+{#        color = function(){#}
+{#        var cvet = Math.floor((Math.random() * 4) + 0);#}
+{#        var cveta = ['http://delaisait.ucoz.ru/_ph/2/537056722.jpg','https://pp.userapi.com/c626816/v626816747/45421/9Or6RaAPBgA.jpg','http://luxfon.com/images/201203/luxfon.com_1133.jpg', 'http://www.likeinvest.org.gamintwo.ru/pic/201305/1600x900/setwalls.ru-57147.jpg'];#}
+{#        var fon = cveta[cvet];#}
+{#        document.body.background = fon;#}
+{#        innerHeight;#}
+{#        };#}
+{#        setInterval(color, 4000);#}
+{#    </script>#}
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link href="{% static 'fon/css/triangle.css' %}" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+{#    <meta http-equiv="refresh" content="80">#}
+    <title>My Project</title>
+{#    <link rel="home" type="application/rss+xml" href="https://news.yandex.ru/{{ city }}/index.rss" />#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+{#    <link rel="stylesheet" href="{% static "style.css" %}">#}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i" rel="stylesheet">
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+
+    <style>
+        html, body{
+
+            height: 100%;
+            max-height: 100%;
+{#            background: url({% static 'image/img.jpg' %}) no-repeat;#}
+{#            background: url({% static 'fon/img/bg2.jpg' %}) no-repeat center center fixed;#}
+{#            -webkit-background-size: 100%;#}
+{#            -moz-background-size: 100%;#}
+{#            -o-background-size: 100%;#}
+{#            background-size: 100%;#}
+        }
+        h1 {
+            font-size: 300%;
+            font-family: 'Roboto', sans-serif;
+            font-style: oblique;
+            padding-top: 1%;
+
+        }
+        h2 {
+            font-family: 'Roboto', sans-serif;
+            padding-top: 2%;
+        }
+        d {
+            -webkit-text-fill-color: #2b2e63;
+            font-style: oblique;
+            font-weight: bolder;
+
+        }
+
+        .general-container {
+{#            background-image: url({% static 'image/img.jpg' %});#}
+{#            font-family: 'Freehand521 BT';#}
+            -webkit-text-fill-color: #e2e6ff;
+            font-size: 100%; font-family: 'Roboto'; font-style: oblique;
+
+        }
+
+        .city_feed {
+        }
+    </style>
+
+
+</head>
+{#<img width="100%" src="https://pp.userapi.com/c626816/v626816747/45421/9Or6RaAPBgA.jpg" style="position:absolute; top:0; margin:0 auto">#}
+{#<body onload="myfunction()" onload="">#}
+<body>
+<canvas id="pixie" width="1600" height="770"></canvas>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="{% static 'fon/js/parallaxsoon5.js' %}" type="text/javascript"></script>
+    <div class="general-container">
+{#        <div class="container top-container">#}
+            <div class="row">
+                <div hidden id="val">{{ hour }}</div>
+                <div class="col-md-5 col-md-offset-1 text-left">
+                    <h1>{{ hi }} <br>
+                        Are you from {{ city }}? :-)
+                        <output style="font-size: 100%; font-family: 'Roboto', sans-serif; font-style: oblique;" type="text" id="mytimezone" value=""></output>
+                        Today {{ num_week }}? :-> <br>
+                        {{ work_time }} :-] <br >
+                        Temperature in {{ city }}: {{ temp }} (max: {{ temp_max }}, min: {{ temp_min }}) <br>
+                        {{ conditions }} ;-> <br>
+                            <h2>
+                                <p>If you want to learn how to program as a TRUE programmer, check it!</p>
+{#                                <iframe width="360" height="215" src="https://www.youtube.com/embed/-kvoStX713Q" frameborder="0" allowfullscreen>#}
+{##}
+{#                                </iframe>#}
+<iframe width="370" height="205" src="https://www.youtube.com/embed/hMxGhHNOkCU" frameborder="0" allowfullscreen></iframe>                            </h2>
+{##}
+{#                        </div>#}
+
+
+
+                        <script type='text/javascript'>
+                            var date =  new Date();
+                            var minutes = date.getTimezoneOffset();
+                            var min = date.getUTCMinutes();
+                            var myhour = document.getElementById("val").innerHTML;
+                            var mytimezone;
+                            if (min < 10)
+                                min = '0' + min;
+                            myhour = myhour - 3;
+                            mytimezone = myhour - (minutes / 60);
+                            if (mytimezone > 23)
+                                mytimezone = mytimezone - 24;
+                            s = 'Now time is ' + mytimezone + '.' + min + ' ? ;-)';
+                            document.getElementById('mytimezone').value = s;
+                        </script>
+                    </h1>
+                </div>
+
+                <div class="col-md-5 text-center">
+                    <h2>
+
+                            Top news today: <br>
+{#                        <div class="blog_city">#}
+{##}
+{#                        </div>#}
+                        <div class="first_feed">
+
+                            </div>
+                        <div align="center">
+
+
+                        <div style="position: absolute; left: 195px; width: 70px; padding-bottom: 30px">
+                        <form id="form_like_news">
+                            <div hidden id="mycity" class="city_feed"
+                                 data-city='{{ 'https://lenta.ru/rss/news'|city_feed:60 }}'
+                                 >
+                            </div>
+{#                            <div>#}
+                            <input type="image" id="submit_btn1" src="{% static 'image/like.jpg' %}" border="0" title="Like" />
+
+{#                            </div>#}
+                        </form>
+                            </div>
+{#                       <form id="mylink">#}
+{#                           <p><a href='http://stackoverflow.com/questions/6462143/prevent-default-on-form-submit-jquery' target="_blank">TRY IT!</a></p>#}
+{#                       </form>#}
+
+
+                        <div style="position: absolute; left: 340px; width: 70px;">
+
+
+                        <form id="form_dislike_news">
+                            <input type="image" id="submit_btn2" src="{% static 'image/dislike.jpg' %}" border="0" title="Dislike" />
+                        </form>
+                            </div>
+                    </div>
+                        <br>
+
+
+                    </h2>
+                </div>
+
+                <div class="col-md-5 text-center">
+                    <h2>
+                            The latest news today in {{ city }}: <br>
+                            Are you interested in something specific?
+                                <div>
+                                    <d>
+                                        <form id="form_search_news" class="form-inline">
+                                            <div class="form-group" >
+                                                <input type="text" class="form-control" placeholder="News search" name="txt" id="txt">
+                                            </div>
+
+                                            <div hidden class="form-group" >
+                                                <button type="submit" id="submit_btn" class="btn btn-info btn-search"
+                                                 >Search</button>
+                                            </div>
+                                        </form>
+
+
+                                    </d>
+
+                                    <div class="blog-news">
+                                        <div id="citynews" class="items-first" style="font-size: 80%; text-align: center"
+                                        data-citynews='{{ mylink|numb_feed:65 }}'
+                                        >
+                                        </div>
+                                        <div class="items-filter">
+                                        </div>
+                                </div>
+                        </div>
+
+
+
+
+                    </h2>
+
+            </div>
+{#        </div>#}
+    </div>
+
+    </div>
+</body>
+</html>
